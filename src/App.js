@@ -4,12 +4,12 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import ListContacts from './ListContacts/ListContacts.js';
 import {generate} from 'randomstring';
+import AddressBook from './components/AddressBook'
 
 class App extends Component {
   state = {
-    Contacts: [
+    contacts: [
       {
         Key : generate(10),
         FirstName : 'Cathy',
@@ -55,13 +55,19 @@ class App extends Component {
     ]
    
   }
-render(){
-  return(
-    <div className="App">
-    <h1>App</h1>
-    </div>
-  );
-}
+  render(){
+    return(
+      <div className="App">
+      <Container>
+        <header>
+          <h1>React Address Book</h1>
+        </header>
+      <AddressBook contacts={this.state.contacts}/>
+      </Container>
+      
+      </div>
+    );
+  }
 }
  
 export default App;
