@@ -3,7 +3,6 @@ import {generate} from 'randomstring';
 import AddressBook  from './components/AddressBook';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 
@@ -84,7 +83,14 @@ class App extends Component {
       newTelephone: ''
     });
   }
-  
+  searchHander = () => {
+    let contactList = this.state.Contacts;
+    let keyWord = new RegExp(this.state.searchWord, 'i'); 
+    contactList = contactList.filter((contact) =>   
+        keyWord.test(contact.FirstName) || keyWord.test(contact.LastName) || keyWord.test(contact.Birthday) || keyWord.test(contact.Telephone)
+      );
+    return contactList;
+  }
   render() {
     
     return (
@@ -95,7 +101,7 @@ class App extends Component {
           </header>
           <input type="text" placeholder="Search..."></input>
           <AddressBook
-            contacts = {this.state.contacts}
+            contacts = {this.searchHander()}
           ></AddressBook>   
           <button>Add New Contact</button>
         </Container>
