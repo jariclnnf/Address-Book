@@ -4,8 +4,8 @@ import Container from 'react-bootstrap/Container';
 
 const addressBook = (props) => {
 
-    let addressbook = props.addressbook;
-    let listContacts = addressbook.map((item) => 
+    let contacts = props.contacts;
+    let listContacts = contacts.map((item) => 
         <Container key = {item.id} >
             <Card className="bg-light border rounded">
                 <Card.Body className="text-left">

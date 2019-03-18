@@ -3,6 +3,7 @@ import {generate} from 'randomstring';
 import AddressBook  from './components/AddressBook';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 
@@ -11,7 +12,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    contacts: [
+    Contacts: [
       {
         id : generate(10),
         FirstName : 'Cathy',
@@ -55,7 +56,6 @@ class App extends Component {
         Telephone: '200-707-8670'
       }
     ],
-    show: false,
     newFirstName: '',
     newLastName: '',
     newBirthday: '',
@@ -77,14 +77,14 @@ class App extends Component {
     };
 
     this.setState({
-      addressBook: [...this.state.addressBook, newContact],
+      Contacts: [...this.state.Contacts, newContact],
       newFirstName: '',
       newLastName: '',
       newBirthday: '',
       newTelephone: ''
     });
   }
-
+  
   render() {
     
     return (
@@ -93,7 +93,11 @@ class App extends Component {
           <header>
             <h1>React Address book</h1>
           </header>
-          <AddressBook contacts = {this.state.contacts}/> 
+          <input type="text" placeholder="Search..."></input>
+          <AddressBook
+            contacts = {this.state.contacts}
+          ></AddressBook>   
+          <button>Add New Contact</button>
         </Container>
       </div>
     );
