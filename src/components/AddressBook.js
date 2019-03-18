@@ -1,25 +1,22 @@
-import React, {Component} from 'react';
-import App from '../App';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
-const AddressBook=(props)=>{
+const addressBook = (props) => {
 
-    let AddressBook = [...props.AddressBook];
-  let listItems = AddressBook.map((item)=>
-    <ListGroup.Item key={item.id}>
-      <Card className="bg-light border rounded">
-        <span key={item.key}
-          className="text-right"
-          onClick={props.closer.bind(null,item.key)}>{'\u274e'}</span>
-          <Card.Body className="text-left">
-            <h5 >{item.title}</h5>
-            <p>{item.description}</p>
-          </Card.Body>
-        </Card>
-    </ListGroup.Item>)
-  return listItems;
-}
-  
-
-
-export default AddressBook;
+    let addressbook = props.addressbook;
+    let listContacts = addressbook.map((item) => 
+        <Container key = {item.id} >
+            <Card className="bg-light border rounded">
+                <Card.Body className="text-left">
+                    <h1>{item.FirstName} {item.LastName}</h1>
+                    <p>Birthday: {item.Birthday}</p>
+                    <p>Telephone: {item.Telephone}</p>
+                </Card.Body>
+            </Card>
+        </Container>
+    );
+    return listContacts;
+        
+};
+export default addressBook;
